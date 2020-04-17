@@ -4,7 +4,7 @@
 
 ## usage
 
-After cloning repo, make sure dependencies are installed by running npm install.
+After cloning repo, install dependencies using npm install.
 ```
 npm install
 ```
@@ -20,3 +20,10 @@ Cities and states with spaces in their name must be formatted with an underscore
 ```
 node weather new_city new_state
 ```
+##  
+
+Now you can get the weather from the command line...or you could just walk outside.
+
+- version: 1.0.0
+- license: SUP
+- author: Dan McGuire
