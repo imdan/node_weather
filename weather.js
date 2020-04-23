@@ -34,7 +34,6 @@ axios.get(`https://en.wikipedia.org/wiki/${city},_${state}`)
 
         }
     })
-    .catch((err) => {console.log(`\nUnable to find ${city}...`.red)})
     .then((response) => {
         if (response.status === 200) {
             // get weather data from weather.com
@@ -54,7 +53,7 @@ axios.get(`https://en.wikipedia.org/wiki/${city},_${state}`)
             console.log(`\n${location} (${time}): Currently ${temp}, ${desc}, and ${feels}\n`.brightYellow.bgBlue);
         }
     })
-    .catch((err) => {console.log(`\n...or the weather for ${city}.\n`.red)});
+    .catch((err) => {console.log(`\nUnable to find the weather for ${city}...\n`.red)});
 
 
 function capitalizeFirst(string) {
