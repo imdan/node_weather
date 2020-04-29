@@ -1,5 +1,7 @@
 # node_weather
 
+![node_weather icon](./node_weather_icon.png)
+
 > Node web scraper that console logs the current weather for a given city using coordinates from Wikipedia and weather data from weather.com.
 
 ## usage
