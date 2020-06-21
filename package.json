@@ -1,11 +1,15 @@
 {
-  "name": "node_scraper",
+  "name": "node_weather",
   "version": "1.0.0",
-  "description": "scraper scrape",
-  "main": "scraper.js",
+  "description": "gets weather in cli",
+  "main": "./lib/weather.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "weather": "./bin/index.js"
+  },
+  "preferGlobal": true,
   "author": "dan",
   "license": "ISC",
   "dependencies": {
