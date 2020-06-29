@@ -6,7 +6,7 @@
 
 ## usage
 
-After cloning repo, install globally using the command below, with local_dir_path being the directory you cloned it to.
+After cloning repo, install globally using the command below, with local_dir_path being the directory you cloned it to. (`./` if you're in the directory)
 
 ```
 npm install -g local_dir_path
