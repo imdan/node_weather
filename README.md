@@ -20,7 +20,7 @@ weather city state
 
 ## defaults and formatting
 
-If no arguments are passed in, the current default is Chicago, Illinois, but this can be changed by setting the city and state variables in weather.js. Just make sure the capitalize function is still in place or that the names begin with a capital letter.
+If no arguments are passed in, the current default is Chicago, Illinois, but this can be changed by setting the default city and state in /bin/index.js. Just make sure the capitalize function is still in place or that the names begin with a capital letter.
 
 Cities and states with spaces in their name must be formatted with an underscore like below.
 
@@ -32,6 +32,6 @@ weather new_city new_state
 
 Now you can get the weather from the command line...or you could just walk outside.
 
-- version: 1.0.0
+- version: 2.0.0
 - license: MIT
 - author: Dan McGuire
