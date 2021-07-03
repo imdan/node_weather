@@ -46,13 +46,13 @@ const parseWiki = data => {
 const parseWeather = data => {
   // pulls weather data from weather.com/.../coordinates
   const $ = cheerio.load(data);
-  let temp = $('span[class="CurrentConditions--tempValue--3KcTQ"]').text();
-  let desc = $('div[class="CurrentConditions--phraseValue--2xXSr"]').text();
+  let temp = $('span[class="CurrentConditions--tempValue--1RYJJ"]').text();
+  let desc = $('div[class="CurrentConditions--phraseValue--17s79"]').text();
   let feels = $(
-    'span[class="TodayDetailsCard--feelsLikeTempValue--2aogo"]'
+    'span[class="TodayDetailsCard--feelsLikeTempValue--3eUBp"]'
   ).text();
-  let location = $('h1[class="CurrentConditions--location--1Ayv3"]').text();
-  let prec = $('div[class="CurrentConditions--precipValue--RBVJT"]').text();
+  let location = $('h1[class="CurrentConditions--location--2_osB"]').text();
+  let prec = $('div[class="CurrentConditions--precipValue--1RgXi"]').text();
   let time = new Date().toLocaleTimeString('en-us', {
     hour12: true,
     hour: 'numeric',

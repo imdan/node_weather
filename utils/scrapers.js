@@ -29,6 +29,7 @@ const scrapeWeather = async coords => {
 
     if (weatherReq.status === 200) {
       const weatherRes = weatherReq.data;
+
       const { temp, desc, feels, location, prec, time } = parseWeather(
         weatherRes
       );
