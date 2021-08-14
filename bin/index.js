@@ -6,7 +6,7 @@ const colors = require('colors');
 
 // Must be capitalized and use _ for spaces
 const defaults = {
-  city: 'Wheaton',
+  city: 'Chicago',
   state: 'Illinois'
 };
 
