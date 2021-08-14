@@ -45,14 +45,19 @@ const parseWiki = data => {
 
 const parseWeather = data => {
   // pulls weather data from weather.com/.../coordinates
+
+  const tempClass = 'CurrentConditions--tempValue--3a50n';
+  const descClass = 'CurrentConditions--phraseValue--2Z18W';
+  const feelsClass = 'TodayDetailsCard--feelsLikeTempValue--Cf9Sl';
+  const locationClass = 'CurrentConditions--location--kyTeL';
+  const precClass = 'CurrentConditions--precipValue--3nxCj';
+
   const $ = cheerio.load(data);
-  let temp = $('span[class="CurrentConditions--tempValue--1RYJJ"]').text();
-  let desc = $('div[class="CurrentConditions--phraseValue--17s79"]').text();
-  let feels = $(
-    'span[class="TodayDetailsCard--feelsLikeTempValue--3eUBp"]'
-  ).text();
-  let location = $('h1[class="CurrentConditions--location--2_osB"]').text();
-  let prec = $('div[class="CurrentConditions--precipValue--1RgXi"]').text();
+  let temp = $(`span[class=${tempClass}]`).text();
+  let desc = $(`div[class=${descClass}]`).text();
+  let feels = $(`span[class=${feelsClass}]`).text();
+  let location = $(`h1[class=${locationClass}]`).text();
+  let prec = $(`div[class=${precClass}]`).text();
   let time = new Date().toLocaleTimeString('en-us', {
     hour12: true,
     hour: 'numeric',
