@@ -14,10 +14,12 @@ const main = async () => {
   const { city, state } = parseArgs(process.argv, defaults);
   const weather = await getWeather(city, state);
 
+  if (!weather) {return false}
+
   if (weather.temp === '' && weather.desc === '') {
     console.log(
       '\nunable to get weather data...update the class names in ./utils/utils.js -> parseWeather()\n'
-        .brightYellow
+        .red
     );
   } else {
     printWeather(weather);

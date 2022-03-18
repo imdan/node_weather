@@ -13,10 +13,11 @@ const scrapeCoords = async (city, state) => {
       const coordinates = parseWiki(wikiRes);
       return coordinates;
     } else {
-      throw new Error(`not good dawg....can't find ${city}'s coordinates`);
+      throw new Error();
     }
-  } catch (err) {
-    console.error(err.message);
+  } catch(err) {
+    console.error(`\nnot good dawg....can't find ${city}'s coordinates\n`.red);
+    return false;
   }
 };
 
@@ -43,10 +44,11 @@ const scrapeWeather = async coords => {
         time
       };
     } else {
-      throw new Error(`oh geez...can't find the ${city}'s weather`);
+      throw new Error();
     }
   } catch (err) {
-    console.error(err.message);
+    console.error(`\noh geez...can't find the ${city}'s weather\n`.red);
+    return false;
   }
 };
 
