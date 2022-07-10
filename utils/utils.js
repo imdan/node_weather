@@ -1,4 +1,6 @@
-const cheerio = require('cheerio');
+require('dotenv').config();
+const sqlite3 = require('sqlite3').verbose()
+const db = new sqlite3.Database(`${process.env.DB_PATH}`);
 
 const parseArgs = (argv, defaults) => {
   // removes node and file_path from args
@@ -27,53 +29,6 @@ const capitalizeArgs = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const parseWiki = data => {
-  // pulls coordinates from wikipedia page
-  const $ = cheerio.load(data);
-  let find_coords = $('span .geo')[1].children;
-  let coords = find_coords[0].data;
-  let coords_arr = coords.split('; ');
-
-  // format coordinates correctly
-  coords_arr.forEach((num, i) => {
-    num = parseFloat(num);
-    coords_arr[i] = num.toFixed(2);
-  });
-
-  return coords_arr.join(',');
-};
-
-const parseWeather = data => {
-  // pulls weather data from weather.com/.../coordinates
-
-  const tempClass = 'CurrentConditions--tempValue--3a50n';
-  const descClass = 'CurrentConditions--phraseValue--2Z18W';
-  const feelsClass = 'TodayDetailsCard--feelsLikeTempValue--Cf9Sl';
-  const locationClass = 'CurrentConditions--location--kyTeL';
-  const precClass = 'CurrentConditions--precipValue--3nxCj';
-
-  const $ = cheerio.load(data);
-  let temp = $(`span[class=${tempClass}]`).text();
-  let desc = $(`div[class=${descClass}]`).text();
-  let feels = $(`span[class=${feelsClass}]`).text();
-  let location = $(`h1[class=${locationClass}]`).text();
-  let prec = $(`div[class=${precClass}]`).text();
-  let time = new Date().toLocaleTimeString('en-us', {
-    hour12: true,
-    hour: 'numeric',
-    minute: 'numeric'
-  });
-
-  return {
-    temp,
-    desc,
-    feels,
-    location,
-    prec,
-    time
-  };
-};
-
 const printWeather = weather => {
   // prints current weather to console
   const { temp, desc, feels, location, prec, time } = weather;
@@ -91,10 +46,38 @@ const printWeather = weather => {
   }
 };
 
+const saveWeather = (weather) => {
+  // saves weather to sqlite db
+  // console.log(`db path ${process.env.DB_PATH}`);
+
+  if (!weather) {
+    console.log('\nweather not saved.');
+    return false;
+  }
+
+  const { temp, desc, feels, location, prec, time } = weather;
+  const today = new Date().toLocaleDateString();
+
+  try {
+    db.serialize(() => {
+      const stmt = db.prepare("INSERT INTO weather(date, time, temp, desc, feels, location, prec) VALUES (?,?,?,?,?,?,?)");
+      stmt.run(`${today}`, `${time}`, `${temp}`, `${desc}`, `${feels}`, `${location}`, `${prec}`);
+      stmt.finalize();
+      console.log('weather saved.\n')
+    });
+    
+    db.close()
+
+  } catch (err) {
+    console.log('db error, weather not saved\n')
+    return false
+  }
+
+}
+
 module.exports = {
   capitalizeArgs,
   parseArgs,
-  parseWiki,
-  parseWeather,
-  printWeather
+  printWeather,
+  saveWeather
 };

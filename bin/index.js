@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 const getWeather = require('../lib/weather.js');
-const { printWeather, parseArgs } = require('../utils/utils.js');
+const { printWeather, parseArgs, saveWeather } = require('../utils/utils.js');
 const colors = require('colors');
 
 // Must be capitalized and use _ for spaces
 const defaults = {
-  city: 'Chicago',
+  city: 'Wheaton',
   state: 'Illinois'
 };
 
@@ -22,7 +22,11 @@ const main = async () => {
         .red
     );
   } else {
-    printWeather(weather);
+
+    //might try to figure out arg flag here to do one or the other...
+
+    printWeather(weather); // prints weather to console
+    saveWeather(weather); // saves weather to sqlite db defined in .env var
   }
 };
 
