@@ -20,9 +20,9 @@ weather city state
 
 ## defaults and formatting
 
-If no arguments are passed in, the current default is Chicago, Illinois, but this can be changed by setting the default city and state in /bin/index.js. Just make sure the capitalize function is still in place or that the names begin with a capital letter.
+If no arguments are passed in the default city and state set in the .env file will be used. Just make sure that the names begin with a capital letter.
 
-Cities and states with spaces in their name must be formatted with an underscore like below.
+Cities and states with spaces in their name must be formatted with an underscore like below when paseed as arguments.
 
 ```
 weather new_city new_state

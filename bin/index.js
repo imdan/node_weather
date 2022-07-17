@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-
+const path = require('path')
+require('dotenv').config({path: path.resolve(__dirname, '../.env')});
 const getWeather = require('../lib/weather.js');
 const { printWeather, parseArgs, saveWeather } = require('../utils/utils.js');
 const colors = require('colors');
 
 // Must be capitalized and use _ for spaces
 const defaults = {
-  city: 'Wheaton',
-  state: 'Illinois'
+  city: process.env.CURRENT_CITY,
+  state: process.env.CURRENT_STATE
 };
 
 const main = async () => {

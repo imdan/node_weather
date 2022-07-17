@@ -1,7 +1,7 @@
-const path = require('path')
-require('dotenv').config({path: path.resolve(__dirname, '../.env')});
+require('dotenv').config();
 const sqlite3 = require('sqlite3').verbose()
-const db = new sqlite3.Database(path.resolve(__dirname, `${process.env.DB_PATH}`));
+const path = require('path')
+const db = new sqlite3.Database(path.resolve('/home/dan/Documents/apps/node_weather', `${process.env.DB_PATH}`));
 
 
 const parseArgs = (argv, defaults) => {
@@ -57,7 +57,7 @@ const saveWeather = (weather) => {
     return false;
   }
 
-  // console.log(path.resolve('/home/dan/Documents/apps/node_weather', `${process.env.DB_PATH}`));
+  // console.log(path.resolve(/home/dan/.nvm/versions/node/v17.0.1/bin/node /home/dan/Documents/apps/node_weather/bin/index.js, `${process.env.DB_PATH}`));
 
   const { temp, desc, feels, location, prec, time } = weather;
   const today = new Date().toLocaleDateString();
