@@ -23,10 +23,10 @@ const parseWiki = data => {
 const parseWeather = data => {
   // pulls weather data from weather.com/.../coordinates
 
-  const tempClass = 'CurrentConditions--tempValue--3a50n';
-  const descClass = 'CurrentConditions--phraseValue--2Z18W';
-  const feelsClass = 'TodayDetailsCard--feelsLikeTempValue--Cf9Sl';
-  const locationClass = 'CurrentConditions--location--kyTeL';
+  const tempClass = 'CurrentConditions--tempValue--MHmYY';
+  const descClass = 'CurrentConditions--phraseValue--mZC_p';
+  const feelsClass = 'TodayDetailsCard--feelsLikeTempValue--2icPt';
+  const locationClass = 'CurrentConditions--location--1YWj_';
   const precClass = 'CurrentConditions--precipValue--3nxCj';
 
   const $ = cheerio.load(data);
